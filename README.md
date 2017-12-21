@@ -76,5 +76,15 @@ This example can used for ck807/ck810 linux, add the compiled toolchain and qemu
 
 You can see the output:<br>
 >"Hello World!"<br>
-  
+
+
+## The relationship between multilib related options and qemu options
+Under normal circumstances, qemu cpu options only need to be consistent with the compiled cpu options.For example, when we use -mcpu=ck803e for compiling, just add -cpu ck803e for qemu.<br>
+There are two options that require special attention.<br>
+### -mbig-endian/-mlittle-endian
+when used -mlittle-endian, execute the qemu-system-cskyv2 or qemu-cskyv2<br>
+when used -mbig-endian, execute the qemu-system-cskyv2eb or qemu-cskyv2eb<br>
+### -mhard-float/-msoft-float
+when used -msoft-float, the cpu option for qemu does not need to add 'f'<br>
+when used -mhard-float,the cpu option for qemu needs to add 'f'<br>
   
