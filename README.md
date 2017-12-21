@@ -26,6 +26,7 @@ After the compilation is completed, the toolchain will be installed into the "in
 After the compilation is completed, the toolchain will be installed into the "install-csky-abiv2-elf-minilibc" directory<br>
 <br>
 As mentioned above, you can use the script to compile all the toolchains, if you want to compile by yourself, you can add the "--fake" option to the build command to print out all the configuration and compile commands, for example:<br>
+
 `./build-csky-gcc.py --abi=abiv2 --tos=linux --libc=uclibc-ng --fake`<br>
 
 
