@@ -1242,7 +1242,7 @@ component = {
 								: build_gcc_compatibility,
 				  },
 
-	"minilibc"	: { "url"		: "ssh://@192.168.0.78:29418/tools/csky-minilibc, --branch csky-minilibc-3_0-dev",
+        "minilibc"	: { "url"		: "git@github.com:c-sky/toolchain-build.git",
 					"worker" 	: [(build_minilibc, "gcc.0")],
 				  },
 
@@ -1253,7 +1253,7 @@ component = {
 					"multilib"	: ["MULTILIB_OPTIONS=mpic"]
 				  },
 
-        "uclibc-ng"	: { "url"		: "git@work.github.com:c-sky/uclibc-ng.git, --depth=1",
+        "uclibc-ng"	: { "url"		: "git@github.com:c-sky/uclibc-ng.git, --depth=1",
 					"worker" 	: [(build_uclibc_ng, "linux-libc-headers, gcc.0")],
 					"multilib"	: ["MULTILIB_OPTIONS=mpic"]
 				  },
