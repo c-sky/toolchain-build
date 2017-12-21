@@ -34,7 +34,7 @@ As mentioned above, you can use the script to compile all the toolchains, if you
 ## BUILD qemu
 * First, download the code:<br>
 `git clone git@github.com:c-sky/qemu.git`<br>
-* Second, create a directory for building, enter the directory, configure and build, for example:
+* Second, create a directory for building, enter the directory, configure and build, for example:<br>
 `mkdir qemu_build`<br>
 `cd qemu_build`<br>
 `${QEMU_SOURCE_DIR}/configure --target-list="cskyv2-softmmu cskyv2-linux-user cskyv2eb-softmmu cskyv2eb-linux-user" --prefix=${QEMU_INSTALL_DIR}`<br>
