@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="com.csky.cds.debug.core.CSKY_GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exeWithoutOs" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exeWithoutOs" cleanCommand="rm -rf" description="" id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733" name="Debug" parent="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug">
+					<folderInfo id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733." name="/" resourcePath="">
+						<toolChain id="cds.managedbuild.toolchain.ckcoregcc.abiv2.exeWithoutOs.debug.1691113355" name="CSky abiv2 Elf Toolchain" superClass="cds.managedbuild.toolchain.ckcoregcc.abiv2.exeWithoutOs.debug">
+							<targetPlatform id="cds.managedbuild.target.ckcoregcc.platform.abiv2.exeWithoutOs.debug.691336793" name="Debug Platform" superClass="cds.managedbuild.target.ckcoregcc.platform.abiv2.exeWithoutOs.debug"/>
+							<builder buildPath="${workspace_loc:/1.Uart}/Debug" id="cds.managedbuild.target.ckcoregcc.builder.abiv2.exeWithoutOs.debug.1562505559" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cds.managedbuild.target.ckcoregcc.builder.abiv2.exeWithoutOs.debug"/>
+							<tool command="csky-abiv2-elf-gcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" id="cds.managedbuild.tool.ckcoregcc.assembler.abiv2.exeWithoutOs.debug.1920047628" name="CSky Elf Assembler" superClass="cds.managedbuild.tool.ckcoregcc.assembler.abiv2.exeWithoutOs.debug">
+								<option id="ckcoregcc.both.asm.option.include.paths.685078139" name="Include paths (-I)" superClass="ckcoregcc.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<option id="ckcoregcc.asm.option.elf.abiv2.cputype.1244804290" name="CPUType" superClass="ckcoregcc.asm.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.assembler.option.def.symbols.388303081" name="Defined symbols (-D)" superClass="ckcoregcc.assembler.option.def.symbols" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CONFIG_CKCPU_MMU=1"/>
+								</option>
+							</tool>
+							<tool id="cds.managedbuild.tool.ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.debug.1588873311" name="CSky Elf C++ Compiler" superClass="cds.managedbuild.tool.ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.debug">
+								<option id="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.debug.option.optimization.level.573048284" name="Optimization Level" superClass="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.debug.option.optimization.level"/>
+								<option id="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.debug.option.debugging.level.1828265270" name="Debug Level" superClass="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.debug.option.debugging.level" value="ckcoregcc.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="ckcoregcc.cpp.compiler.option.include.paths.309233194" name="Include paths (-I)" superClass="ckcoregcc.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<option id="ckcoregcc.cpp.compiler.option.elf.abiv2.cputype.1782565695" name="CPUType" superClass="ckcoregcc.cpp.compiler.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.cpp.compiler.option.preprocessor.def.914482262" name="Defined symbols (-D)" superClass="ckcoregcc.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CONFIG_CKCPU_MMU=1"/>
+								</option>
+								<inputType id="cds.managedbuild.tool.ckcoregcc.cpp.compiler.input.1865587633" superClass="cds.managedbuild.tool.ckcoregcc.cpp.compiler.input"/>
+							</tool>
+							<tool id="cds.managedbuild.tool.ckcoregcc.c.compiler.abiv2.exeWithoutOs.debug.1323546370" name="CSky Elf C Compiler" superClass="cds.managedbuild.tool.ckcoregcc.c.compiler.abiv2.exeWithoutOs.debug">
+								<option id="ckcoregcc.c.compiler.abiv2.exeWithoutOs.debug.option.optimization.level.548081315" name="Optimization Level" superClass="ckcoregcc.c.compiler.abiv2.exeWithoutOs.debug.option.optimization.level"/>
+								<option id="ckcoregcc.c.compiler.abiv2.exeWithoutOs.debug.option.debugging.level.454263937" name="Debug Level" superClass="ckcoregcc.c.compiler.abiv2.exeWithoutOs.debug.option.debugging.level" value="ckcoregcc.c.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="ckcoregcc.c.compiler.option.include.paths.1543048167" name="Include paths (-I)" superClass="ckcoregcc.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<option id="ckcoregcc.compiler.option.elf.abiv2.cputype.958828742" name="CPUType" superClass="ckcoregcc.compiler.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.c.compiler.option.preprocessor.def.130404231" name="Defined symbols (-D)" superClass="ckcoregcc.c.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CONFIG_CKCPU_MMU=1"/>
+								</option>
+								<inputType id="cds.managedbuild.tool.ckcoregcc.c.compiler.input.1465982616" superClass="cds.managedbuild.tool.ckcoregcc.c.compiler.input"/>
+							</tool>
+							<tool id="cds.managedbuild.tool.ckcoregcc.binary.base.elf.linker.abiv2.1284305290" name="CSky Elf Binary Linker" superClass="cds.managedbuild.tool.ckcoregcc.binary.base.elf.linker.abiv2"/>
+							<tool id="cds.managedbuild.tool.ckcoregcc.linker.cygwin.abiv2.exeWithoutOs.debug.1890790554" name="CSky Elf Linker" superClass="cds.managedbuild.tool.ckcoregcc.linker.cygwin.abiv2.exeWithoutOs.debug">
+								<option id="ckcoregcc.linker.option.elf.abiv2.cputype.2139266752" name="CPUType" superClass="ckcoregcc.linker.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.link.option.nostdlib.105679766" superClass="ckcoregcc.link.option.nostdlib" value="true" valueType="boolean"/>
+								<inputType id="cds.managedbuild.tool.ckcoregcc.c.linker.input.880535334" superClass="cds.managedbuild.tool.ckcoregcc.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="com.csky.cds.debug.core.CSKY_GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exeWithoutOs" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exeWithoutOs" cleanCommand="rm -rf" description="" id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817" name="Release" parent="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release">
+					<folderInfo id="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817." name="/" resourcePath="">
+						<toolChain id="cds.managedbuild.toolchain.ckcoregcc.abiv2.exeWithoutOs.release.92213331" name="CSky abiv2 Elf Toolchain" superClass="cds.managedbuild.toolchain.ckcoregcc.abiv2.exeWithoutOs.release">
+							<targetPlatform id="cds.managedbuild.target.ckcoregcc.platform.abiv2.exeWithoutOs.release.2134806296" name="Debug Platform" superClass="cds.managedbuild.target.ckcoregcc.platform.abiv2.exeWithoutOs.release"/>
+							<builder buildPath="${workspace_loc:/1.Uart}/Release" id="cds.managedbuild.target.ckcoregcc.builder.abiv2.exeWithoutOs.release.48151666" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cds.managedbuild.target.ckcoregcc.builder.abiv2.exeWithoutOs.release"/>
+							<tool id="cds.managedbuild.tool.ckcoregcc.assembler.abiv2.exeWithoutOs.release.2090535636" name="CSky Elf Assembler" superClass="cds.managedbuild.tool.ckcoregcc.assembler.abiv2.exeWithoutOs.release">
+								<option id="ckcoregcc.both.asm.option.include.paths.1151663064" name="Include paths (-I)" superClass="ckcoregcc.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<option id="ckcoregcc.asm.option.elf.abiv2.cputype.1238893264" name="CPUType" superClass="ckcoregcc.asm.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.assembler.option.def.symbols.141579641" name="Defined symbols (-D)" superClass="ckcoregcc.assembler.option.def.symbols" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CONFIG_CKCPU_MMU=1"/>
+								</option>
+							</tool>
+							<tool id="cds.managedbuild.tool.ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.release.985073036" name="CSky Elf C++ Compiler" superClass="cds.managedbuild.tool.ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.release">
+								<option id="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.release.option.optimization.level.1443196288" name="Optimization Level" superClass="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.release.option.optimization.level" value="ckcoregcc.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.release.option.debugging.level.1969294854" name="Debug Level" superClass="ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.release.option.debugging.level" value="ckcoregcc.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="ckcoregcc.cpp.compiler.option.include.paths.2025056443" name="Include paths (-I)" superClass="ckcoregcc.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<option id="ckcoregcc.cpp.compiler.option.elf.abiv2.cputype.1246757796" name="CPUType" superClass="ckcoregcc.cpp.compiler.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.cpp.compiler.option.preprocessor.def.2092940773" name="Defined symbols (-D)" superClass="ckcoregcc.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CONFIG_CKCPU_MMU=1"/>
+								</option>
+								<inputType id="cds.managedbuild.tool.ckcoregcc.cpp.compiler.input.1223488748" superClass="cds.managedbuild.tool.ckcoregcc.cpp.compiler.input"/>
+							</tool>
+							<tool id="cds.managedbuild.tool.ckcoregcc.c.compiler.abiv2.exeWithoutOs.release.1759239519" name="CSky Elf C Compiler" superClass="cds.managedbuild.tool.ckcoregcc.c.compiler.abiv2.exeWithoutOs.release">
+								<option id="ckcoregcc.c.compiler.abiv2.exeWithoutOs.release.option.optimization.level.127313831" name="Optimization Level" superClass="ckcoregcc.c.compiler.abiv2.exeWithoutOs.release.option.optimization.level" value="ckcoregcc.c.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="ckcoregcc.c.compiler.abiv2.exeWithoutOs.release.option.debugging.level.116224202" name="Debug Level" superClass="ckcoregcc.c.compiler.abiv2.exeWithoutOs.release.option.debugging.level" value="ckcoregcc.c.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="ckcoregcc.c.compiler.option.include.paths.522953322" name="Include paths (-I)" superClass="ckcoregcc.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
+								</option>
+								<option id="ckcoregcc.compiler.option.elf.abiv2.cputype.1505477286" name="CPUType" superClass="ckcoregcc.compiler.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.c.compiler.option.preprocessor.def.886708525" name="Defined symbols (-D)" superClass="ckcoregcc.c.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CONFIG_CKCPU_MMU=1"/>
+								</option>
+								<inputType id="cds.managedbuild.tool.ckcoregcc.c.compiler.input.1551643109" superClass="cds.managedbuild.tool.ckcoregcc.c.compiler.input"/>
+							</tool>
+							<tool id="cds.managedbuild.tool.ckcoregcc.binary.base.elf.linker.abiv2.899417190" name="CSky Elf Binary Linker" superClass="cds.managedbuild.tool.ckcoregcc.binary.base.elf.linker.abiv2"/>
+							<tool id="cds.managedbuild.tool.ckcoregcc.linker.cygwin.abiv2.exeWithoutOs.release.2101906792" name="CSky Elf Linker" superClass="cds.managedbuild.tool.ckcoregcc.linker.cygwin.abiv2.exeWithoutOs.release">
+								<option id="ckcoregcc.linker.option.elf.abiv2.cputype.1478112145" name="CPUType" superClass="ckcoregcc.linker.option.elf.abiv2.cputype" value="ck810" valueType="enumerated"/>
+								<option id="ckcoregcc.link.option.nostdlib.1456689353" superClass="ckcoregcc.link.option.nostdlib" value="true" valueType="boolean"/>
+								<inputType id="cds.managedbuild.tool.ckcoregcc.c.linker.input.164174963" superClass="cds.managedbuild.tool.ckcoregcc.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="1.Uart.cds.managedbuild.target.ckcoregcc.abiv2.exeWithoutOs.1336640787" name="Application Without OS" projectType="cds.managedbuild.target.ckcoregcc.abiv2.exeWithoutOs"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733;cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733.;cds.managedbuild.tool.ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.debug.1588873311;cds.managedbuild.tool.ckcoregcc.cpp.compiler.input.1865587633">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.csky.cds.managedbuilder.core.CDSGCCWinManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817;cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817.;cds.managedbuild.tool.ckcoregcc.cpp.compiler.abiv2.exeWithoutOs.release.985073036;cds.managedbuild.tool.ckcoregcc.cpp.compiler.input.1223488748">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.csky.cds.managedbuilder.core.CDSGCCWinManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733;cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.debug.595311733.;cds.managedbuild.tool.ckcoregcc.c.compiler.abiv2.exeWithoutOs.debug.1323546370;cds.managedbuild.tool.ckcoregcc.c.compiler.input.1465982616">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.csky.cds.managedbuilder.core.CDSGCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817;cds.managedbuild.config.ckcoregcc.abiv2.exeWithoutOs.release.1628095817.;cds.managedbuild.tool.ckcoregcc.c.compiler.abiv2.exeWithoutOs.release.1759239519;cds.managedbuild.tool.ckcoregcc.c.compiler.input.1551643109">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.csky.cds.managedbuilder.core.CDSGCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="cdsBuildSystem">
+		<version id="4.0.0"/>
+	</storageModule>	
+	<storageModule moduleId="DebugLaunch">
+		<launch RegisterGroups="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;registerGroups&gt;&#13;&#10;&lt;group memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#13;&amp;#10;&amp;lt;registerGroup enabled=&amp;quot;true&amp;quot; name=&amp;quot;General-Registers&amp;quot;&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r0&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r1&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r2&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r3&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r4&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r5&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r6&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r7&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r8&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r9&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r10&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r11&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r12&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r13&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r14&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r15&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r16&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r17&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r18&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r19&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r20&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r21&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r22&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r23&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r24&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r25&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r26&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r27&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r28&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r29&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r30&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;r31&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;pc&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;usp&amp;quot; originalGroupName=&amp;quot;General-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;/registerGroup&amp;gt;&amp;#13;&amp;#10;&quot;/&gt;&#13;&#10;&lt;group memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#13;&amp;#10;&amp;lt;registerGroup enabled=&amp;quot;true&amp;quot; name=&amp;quot;Control-Registers&amp;quot;&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;psr&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;vbr&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;epsr&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;fpsr&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;epc&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;fpc&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;ss0&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;ss1&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;ss2&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;ss3&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;ss4&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;cr18&amp;quot; originalGroupName=&amp;quot;Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;/registerGroup&amp;gt;&amp;#13;&amp;#10;&quot;/&gt;&#13;&#10;&lt;group memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#13;&amp;#10;&amp;lt;registerGroup enabled=&amp;quot;true&amp;quot; name=&amp;quot;Mmu-Control-Registers&amp;quot;&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr0&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr2&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr3&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr4&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr6&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr8&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr29&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr30&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;register name=&amp;quot;mcr31&amp;quot; originalGroupName=&amp;quot;Mmu-Control-Registers&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&amp;lt;/registerGroup&amp;gt;&amp;#13;&amp;#10;&quot;/&gt;&#13;&#10;&lt;/registerGroups&gt;&#13;&#10;"/>
+		<debugscript InitScriptPath="gdb.init"/>
+	</storageModule>
+</cproject>
