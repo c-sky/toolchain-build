@@ -2,7 +2,7 @@
 
 ## BUILD toolchain
 First, create a directory for building toolchain.<br>
-Then enter the direcotry, and copy the script “build-csky-gcc.py” to this directory.<br>
+Second, enter the direcotry, and copy the script “build-csky-gcc.py” to this directory.<br>
 C-SKY abi-v2 supports three versions of the toolchain to compile.<br>
 ### uclibc-ng
 * Run the following command to download the required source code:<br>
