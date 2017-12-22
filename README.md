@@ -50,7 +50,8 @@ As mentioned above, you can use the script to compile all the toolchains, if you
 ## Runing examples for test
 There are three examples in the "examples" directory.<br>
 ### smartcard_uart
-This example can used for ck801/ck802/ck803 elf, add the compiled toolchain and qemu program directory to the current PATH environment variable, execute the following command to run this program:<br>
+This example can used for ck801/ck802/ck803 elf, add the compiled toolchain and qemu program directory to the current PATH environment variable, execute the following command to run this demo:<br>
+`export PATH=${QEMU_INSTALL_DIR}/bin:${TOOLCHAIN_INSTALL_DIR}/bin:$PATH`<br>
 `make clean`<br>
 `make CPU=ck801/ck802/ck803`<br>
 `qemu-system-cskyv2  -machine smart_card -cpu ck801/ck802/ck803 -nographic -kernel Uart.elf`<br>
@@ -59,8 +60,10 @@ You can see the output:<br>
 >Testing uart...<br>
 >Default configure: Baudrate --- 19200,Parity --- NONE,Wordsize --- 8. <br>
 >- - -UART0 ready? [y]<br>
+
+See this shows that the demo has been successfully executed, you can enter the characters interact with the program, or you can exit the emulator using: \<Ctrl-a x\>.
 ### trilobite_uart
-This example can used for ck807/ck810 elf, add the compiled toolchain and qemu program directory to the current PATH environment variable, execute the following command to run this program:<br>
+This example can used for ck807/ck810 elf, add the compiled toolchain and qemu program directory to the current PATH environment variable, execute the following command to run this demo:<br>
 `make clean`<br>
 `make CPU=ck807/ck810`<br>
 `qemu-system-cskyv2  -machine smart_card -cpu ck807/ck810 -nographic -kernel Uart.elf`<br>
@@ -70,7 +73,7 @@ You can see the output:<br>
 >Default configure: Baudrate --- 19200,Parity --- NONE,Wordsize --- 8. <br>
 >- - -UART0 ready? [y]<br>
 ### linux_hello
-This example can used for ck807/ck810 linux, add the compiled toolchain and qemu program directory to the current PATH environment variable, execute the following command to run this program:<br>
+This example can used for ck807/ck810 linux, add the compiled toolchain and qemu program directory to the current PATH environment variable, execute the following command to run this demo:<br>
 `csky-abiv2-linux-gcc -mcpu=ck807/ck810 hello.c  -o hello --static`<br>
 `qemu-cskyv2 -cpu ck807/ck810 hello`<br>
 
@@ -78,7 +81,7 @@ You can see the output:<br>
 >"Hello World!"<br>
 
 
-## The relationship between multilib related options and qemu options
+## The relationship between compile options and qemu options
 Under normal circumstances, qemu cpu options only need to be consistent with the compiled cpu options.For example, when we use -mcpu=ck803e for compiling, just add -cpu ck803e for qemu.<br>
 There are two options that require special attention.<br>
 ### -mbig-endian/-mlittle-endian
