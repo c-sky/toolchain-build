@@ -36,7 +36,7 @@ Usage:
         Under Linux/windows console:
             1. cd 1.Uart
             2. make  (project files: Makefile Rules.make)
-            3. csky-abiv2-elf-gdb Uart.elf(then connect target, download, run...)
+            3. csky-elfabiv2-gdb Uart.elf(then connect target, download, run...)
 
 Ohters:
         Uart0 used as the termination, Default setting: 19200, 8, none, 1  

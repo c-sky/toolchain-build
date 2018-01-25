@@ -156,6 +156,18 @@ def get_component(options, mm):
 	return (mm, stage)
 
 def get_target_name(options):
+	name = "csky-%s%s" % (options.tos, options.abi)
+	if options.abi == "abiv1":
+		name = "csky-%s" % options.tos
+        if options.tos == "linux":
+            if options.libc == "glibc":
+                libc = "gnu"
+            else:
+                libc = "uclibc"
+            name = "csky-%s-%s%s" % (options.tos, libc, options.abi)
+	return name
+
+def get_old_target_name(options):
 	name = "csky-%s-%s" % (options.abi, options.tos)
 	if options.abi == "abiv1":
 		name = "csky-%s" % options.tos
@@ -313,7 +325,7 @@ def build_is_finished(options, target, real = False):
 def build_binutils(options, argv):
 	cmd = build_cmd(options, "rm -rf ./* && %s/configure", options.binutils_src)
 	cmd += build_cmd(options, "%s", platform.machine())
-	cmd += build_cmd(options, "--target=%s --with-cskyabi=%s", (get_target_name(options), options.abi[-1]))
+        cmd += build_cmd(options, "--target=%s", (get_target_name(options)))
 	cmd += build_cmd(options, "%s", component["binutils"]["append"])
 	cmd += build_cmd(options, "--prefix=%s/", options.prefix)
 	cmd += build_cmd(options, "&& make && make install")
@@ -355,7 +367,7 @@ def build_gcc(options, argv):
 
 def build_gcc_base(options):
 	cmd = build_cmd(options, "rm -rf ./* && %s/configure", options.gcc_src)
-	cmd += build_cmd(options, "--target=%s --with-cskyabi=%s", (get_target_name(options), options.abi))
+        cmd += build_cmd(options, "--target=%s", (get_target_name(options)))
 	cmd += build_cmd(options, "%s", component["gcc"]["append"])
 	cmd += build_cmd(options, "--prefix=%s/", options.prefix)
 
@@ -397,9 +409,8 @@ def build_gcc_tos(options, mm, tos, stage = 0):
 
 	if tos.startswith('linux'):
 		component[mm]["append"] += "--enable-shared \
-		--with-cskylibc=%s \
 		--with-sysroot=%s/%s/libc/ " % \
-		(options.libc, options.prefix, get_target_name(options))
+		(options.prefix, get_target_name(options))
 
 		if stage:
 			component[mm]["append"] += "--enable-threads=posix --disable-libgomp --disable-libmudflap \
@@ -634,7 +645,7 @@ def get_gcc_multilib_compiler_flags(options, mm, argv = "", f = ""):
 
 def build_minilibc(options, argv):
 	cmd = build_cmd(options, "tar -zxf %s/elf_minilibc_base.tar.gz;", options.minilibc_src)
-	cmd += build_cmd(options, "cp -rf csky-abiv2-elf/* %s/csky-abiv2-elf", options.prefix)
+	cmd += build_cmd(options, "cp -rf csky-abiv2-elf/* %s/csky-elfabiv2", options.prefix)
 	cmd_exec_with_checkerr(options, cmd)
 
 def build_uclibc(options, argv):
@@ -750,6 +761,9 @@ def build_uclibc_ng(options, argv):
 	cmd_exec_with_checkerr(options, cmd)
 	cmd = build_cmd(options, "sed -i '/^UCLIBC_EXTRA_CFLAGS.*/d' .config")
 	cmd += build_cmd(options, "&& echo 'UCLIBC_EXTRA_CFLAGS=\"%s\"' >> .config", get_gcc_multilib_opt(argv, "mfloat-abi=v2", "r", "-mfloat-abi=v2"))
+	cmd_exec_with_checkerr(options, cmd)
+	cmd = build_cmd(options, "sed -i '/^CROSS_COMPILER_PREFIX.*/d' .config")
+	cmd += build_cmd(options, "&& echo 'CROSS_COMPILER_PREFIX=\"%s\"' >> .config", get_target_name(options) + "-")
 	cmd_exec_with_checkerr(options, cmd)
 
 	cmd = "make oldconfig KERNEL_SOURCE=%s && make clean && make" % (options.linux_libc_headers_install + "/../")
@@ -1106,10 +1120,16 @@ def build_init(options):
 		opt = m.replace("-", "_") + "_build"
 		setattr(options, opt, options.build + "/" + m)
 
+def make_execute_link(options, argv):
+	bin_dir = "%s/bin/" % (options.prefix)
+	cmd = build_cmd(options, "cd %s", bin_dir)
+	cmd += build_cmd(options, "&& for FILE in %s*;do ln -s $FILE %s${FILE#*%s}\ndone", (get_target_name(options), get_old_target_name(options), get_target_name(options)))
+	cmd_exec_with_checkerr(options, cmd)
+
 def main():
 	global component
 
-	parser = OptionParser(version="%prog 2.41")
+	parser = OptionParser(version="%prog 2.5g")
 
 	parser.add_option("--abi", dest="abi", default=profile["abi"][0],
 	                  help=("select abi version (default: %s)" % profile["abi"][0]), metavar=str(profile["abi"]))
@@ -1190,6 +1210,7 @@ def main():
 		mm += options.addon
 
 	mm.append("gdb")
+	mm.append("mklink")
 	if options.init:
 		build_toolchain_env(options, mm)
 		return
@@ -1279,6 +1300,13 @@ component = {
 			"default" 	: '--disable-ld --disable-gas --disable-binutils --disable-gold --disable-gprof --without-auto-load-safe-path --with-python=no --disable-sim --enable-install-libbfd',
 			"worker" 	: [(build_gdb, "")],
 		},
+        "mklink"    :
+            {
+                    "worker"    : [(make_execute_link, "")],
+                    "comment"   : "Make soft link for executable file in in \
+                            directory bin/, the purpose of doing so is compatible with the old \
+                            target triplets name of toolchains."
+            }
 }
 
 
@@ -1408,6 +1436,7 @@ def build_gcc_test(options, argv):
 	cmd_exec_with_checkerr(options, cmd)
 	build_gcc_test_patch(options, argv, False)
 	print "\n--> gcc-test install dir: %s" % outdir
+
 
 addons = {
 	"libcc-rt"	: { "url"		: "ssh://@192.168.0.78:29418/tools/libcc-runtime",

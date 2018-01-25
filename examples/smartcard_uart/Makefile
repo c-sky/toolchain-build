@@ -2,12 +2,12 @@
 # modified by liu jirang on 20140228
 
 NAME    = Uart
-CC      = csky-abiv2-elf-gcc 
-AS      = csky-abiv2-elf-as
-AR      = csky-abiv2-elf-ar
-LD      = csky-abiv2-elf-ld
-DUMP    = csky-abiv2-elf-objdump
-OBJCOPY = csky-abiv2-elf-objcopy
+CC      = csky-elfabiv2-gcc 
+AS      = csky-elfabiv2-as
+AR      = csky-elfabiv2-ar
+LD      = csky-elfabiv2-ld
+DUMP    = csky-elfabiv2-objdump
+OBJCOPY = csky-elfabiv2-objcopy
 ROOTDIR  = $(shell pwd)
 
 INCLUDEDIRS = -I$(ROOTDIR)/include  -I$(ROOTDIR)/drivers -I./

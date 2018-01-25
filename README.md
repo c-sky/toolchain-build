@@ -10,20 +10,20 @@ C-SKY abi-v2 supports three versions of the toolchain to compile.<br>
 The code will be downloaded to the "source" directory under the current directory, you can also create your own "source" directory, and download the source code of the required components to the source directory<br>
 * Execute the following command to compile the toolchain:<br>
 `./build-csky-gcc.py --abi=abiv2 --tos=linux --libc=uclibc-ng`<br>
-After the compilation is completed, the toolchain will be installed into the "install-csky-abiv2-linux-uclibc-ng" directory<br>
+After the compilation is completed, the toolchain will be installed into the "install-csky-linux-uclibcabiv2-uclibc-ng" directory<br>
 ### glibc
 * Run the following command to download the required source code:<br>
 `./build-csky-gcc.py --abi=abiv2 --tos=linux --libc=glibc --init`<br>
 * Execute the following command to compile the toolchain:<br>
 `./build-csky-gcc.py --abi=abiv2 --tos=linux --libc=glibc`<br>
 
-After the compilation is completed, the toolchain will be installed into the "install-csky-abiv2-linux-glibc" directory<br>
+After the compilation is completed, the toolchain will be installed into the "install-csky-linux-gnuabiv2-glibc" directory<br>
 ### elf
 * Run the following command to download the required source code:<br>
 `./build-csky-gcc.py --abi=abiv2 --tos=elf --init`<br>
 * Execute the following command to compile the toolchain:<br>
 `./build-csky-gcc.py --abi=abiv2 --tos=elf`<br>
-After the compilation is completed, the toolchain will be installed into the "install-csky-abiv2-elf-minilibc" directory<br>
+After the compilation is completed, the toolchain will be installed into the "install-csky-elfabiv2-minilibc" directory<br>
 <br>
 As mentioned above, you can use the script to compile all the toolchains, if you want to compile by yourself, you can add the "--fake" option to the build command to print out all the configuration and compile commands, for example:<br>
 

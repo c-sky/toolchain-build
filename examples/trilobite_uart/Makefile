@@ -2,12 +2,12 @@
 # modified by liu jirang on 20140228
 
 NAME    = Uart
-CC      = csky-abiv2-elf-gcc 
-AS      = csky-abiv2-elf-as
-AR      = csky-abiv2-elf-ar
-LD      = csky-abiv2-elf-ld
-DUMP    = csky-abiv2-elf-objdump
-OBJCOPY = csky-abiv2-elf-objcopy
+CC      = csky-elfabiv2-gcc 
+AS      = csky-elfabiv2-as
+AR      = csky-elfabiv2-ar
+LD      = csky-elfabiv2-ld
+DUMP    = csky-elfabiv2-objdump
+OBJCOPY = csky-elfabiv2-objcopy
 ROOTDIR  = $(shell pwd)
 
 INCLUDEDIRS = -I$(ROOTDIR)/include  -I$(ROOTDIR)/drivers -I./
@@ -58,11 +58,11 @@ arch/crt0.o: arch/crt0.S
 
 $(NAME).elf: arch/crt0.o $(OBJECTS)  $(SUBDIR_FILES) ckcpu.ld 
 	$(CC)  -mcpu=$(CPU) -mno-multiple-stld -mlittle-endian -nostartfiles -nostdlib \
-	       "`csky-abiv2-elf-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crti.o`" \
-	       "`csky-abiv2-elf-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crtbegin.o`" \
+	       "`csky-elfabiv2-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crti.o`" \
+	       "`csky-elfabiv2-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crtbegin.o`" \
 	       -T./ckcpu.ld -o $(NAME).elf arch/crt0.o  $(OBJECTS) $(SUBDIR_FILES) $(LDLIBS) \
-	       "`csky-abiv2-elf-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crtend.o`" \
-	       "`csky-abiv2-elf-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crtn.o`"	
+	       "`csky-elfabiv2-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crtend.o`" \
+	       "`csky-elfabiv2-gcc -mcpu=$(CPU) -mlittle-endian -print-file-name=crtn.o`"	
 	$(DUMP) -S $(NAME).elf > $(NAME).asm
 
 ifneq ($(wildcard .dep),)
