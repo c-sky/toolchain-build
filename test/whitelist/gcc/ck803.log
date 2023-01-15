@@ -1,0 +1,4 @@
+
+# Need debug
+FAIL: g++.dg/ipa/pr67056.C   scan-ipa-dump cp "Speculative outer type:struct CompositeClass"
+

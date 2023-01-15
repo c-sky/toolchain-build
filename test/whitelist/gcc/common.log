@@ -1,0 +1,91 @@
+FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++14 execution test
+FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++17 execution test
+FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++20 execution test
+FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++98 execution test
+FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++14 execution test
+FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++17 execution test
+FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++20 execution test
+FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++98 execution test
+FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++14 execution test
+FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++17 execution test
+FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++20 execution test
+FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++98 execution test
+FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++14 execution test
+FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++17 execution test
+FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++20 execution test
+FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++98 execution test
+FAIL: g++.dg/pr94920.C  -std=gnu++14  scan-tree-dump-times optimized " ABS_EXPR " 6
+FAIL: g++.dg/pr94920.C  -std=gnu++17  scan-tree-dump-times optimized " ABS_EXPR " 6
+FAIL: g++.dg/pr94920.C  -std=gnu++20  scan-tree-dump-times optimized " ABS_EXPR " 6
+FAIL: g++.dg/pr94920.C  -std=gnu++98  scan-tree-dump-times optimized " ABS_EXPR " 6
+FAIL: g++.dg/warn/Wstringop-overflow-4.C  -std=gnu++98 (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_b.C -std=c++17 (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_b.C -std=c++2a (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_b.C -std=c++2b (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-4_b.C -std=c++17 (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-4_b.C -std=c++2a (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-4_b.C -std=c++2b (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header_b.C -std=c++17 (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header_b.C -std=c++2a (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header_b.C -std=c++2b (test for excess errors)
+FAIL: gcc.dg/analyzer/pr104308.c  (test for warnings, line 10)
+FAIL: gcc.dg/analyzer/pr104308.c  (test for warnings, line 9)
+FAIL: gcc.dg/atomic/c11-atomic-exec-2.c   -O1  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-2.c   -O2  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-2.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-2.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-2.c   -O3 -g  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-2.c   -Os  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -O0  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -O1  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -O2  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -O3 -g  execution test
+FAIL: gcc.dg/atomic/c11-atomic-exec-4.c   -Os  execution test
+FAIL: gcc.dg/atomic/stdatomic-compare-exchange-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
+FAIL: gcc.dg/Warray-bounds-48.c pr102706 (test for warnings, line 133)
+FAIL: gcc.dg/Warray-bounds-48.c pr102706 (test for warnings, line 33)
+XPASS: gcc.dg/attr-alloc_size-11.c missing range info for short (test for warnings, line 51)
+XPASS: gcc.dg/attr-alloc_size-11.c missing range info for signed char (test for warnings, line 50)
+FAIL: gcc.dg/cleanup-10.c execution test
+FAIL: gcc.dg/cleanup-11.c execution test
+FAIL: gcc.dg/cleanup-8.c execution test
+FAIL: gcc.dg/cleanup-9.c execution test
+FAIL: gcc.dg/lower-subreg-1.c scan-rtl-dump subreg1 "Splitting reg"
+FAIL: gcc.dg/pr106397.c (test for excess errors)
+FAIL: gcc.dg/sibcall-3.c execution test
+FAIL: gcc.dg/sibcall-4.c execution test
+FAIL: gcc.dg/uninit-pred-9_b.c bogus warning (test for bogus messages, line 20)
+FAIL: gcc.dg/ipa/iinline-attr.c scan-ipa-dump inline "hooray[^\\n]*inline copy in test"
+XPASS: gcc.dg/plugin/infoleak-vfio_iommu_type1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 42)
+FAIL: gcc.dg/plugin/must-tail-call-1.c -fplugin=./must_tail_call_plugin.so (test for excess errors)
+FAIL: gcc.dg/tree-prof/cmpsf-1.c scan-tree-dump-not dom2 "Invalid sum"
+XPASS: gcc.dg/tree-ssa/20040204-1.c scan-tree-dump-times optimized "link_error" 0
+FAIL: gcc.dg/tree-ssa/gen-vect-34.c scan-tree-dump-times vect "vectorized 1 loops" 1
+FAIL: gcc.misc-tests/gcov-pr94029.c gcov failed: spawn failed
+FAIL: gcc.dg/tree-prof/time-profiler-2.c scan-ipa-dump-times profile "Read tp_first_run: 0" 2
+FAIL: gcc.dg/tree-prof/time-profiler-2.c scan-ipa-dump-times profile "Read tp_first_run: 2" 1
+FAIL: gcc.dg/tree-prof/time-profiler-2.c scan-ipa-dump-times profile "Read tp_first_run: 3" 1
+
+# Also fail in X86, because floating point operation has been optimized, so the exception flag is not set
+FAIL: gcc.dg/pr95115.c execution test
+
+# TARGET_CAN_INLINE_P should be implemented to really support #pragma GCC target or target attribute.
+FAIL: gcc.c-torture/compile/pr105234.c
+
+# Guess it's a case problem, observe for a while
+FAIL: gcc.dg/pr54346.c scan-tree-dump dse1 "VEC_PERM_EXPR.*{ 3, 6, 0, 0 }"
+FAIL: gcc.dg/pr54346.c scan-tree-dump-times dse1 "VEC_PERM_EXPR" 1
+
+# New fail cases found in 2023/1/1, should be caused by gcc mainline
+FAIL: gcc.dg/analyzer/file-CWE-1341-example.c (test for excess errors)
+FAIL: gcc.dg/analyzer/pipe-glibc.c (test for excess errors)
+FAIL: g++.dg/contracts/contracts-tmpl-spec2.C   output pattern test
+FAIL: g++.dg/pr71488.C   (test for excess errors)
+FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++14 (test for excess errors)
+FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++17 (test for excess errors)
+FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++20 (test for excess errors)
+FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++98 (test for excess errors)

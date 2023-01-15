@@ -1,0 +1,37 @@
+# It takes longer to execute for ck801
+FAIL: gcc.dg/pr48141.c (test for excess errors)
+
+# Need debug
+FAIL: g++.dg/ipa/pr67056.C   scan-ipa-dump cp "Speculative outer type:struct CompositeClass"
+FAIL: gcc.dg/ifcvt-4.c scan-rtl-dump ce1 "2 true changes made"
+
+# Pattern like *ck801_subsi3_sp should be written as define_insn_and_spilt
+FAIL: gcc.dg/torture/pr93124.c
+
+# Nested function trampolines not supported on CK801
+FAIL: gcc.c-torture/compile/20010226-1.c
+FAIL: gcc.c-torture/compile/20050122-2.c
+FAIL: gcc.c-torture/compile/930506-2.c
+FAIL: gcc.c-torture/compile/nested-1.c
+FAIL: gcc.c-torture/compile/pr27889.c
+FAIL: gcc.c-torture/execute/20000822-1.c
+FAIL: gcc.c-torture/execute/921215-1.c
+FAIL: gcc.c-torture/execute/931002-1.c
+FAIL: gcc.c-torture/execute/nestfunc-1.c
+FAIL: gcc.c-torture/execute/nestfunc-2.c
+FAIL: gcc.c-torture/execute/nestfunc-3.c
+FAIL: gcc.c-torture/execute/nestfunc-5.c
+FAIL: gcc.c-torture/execute/nestfunc-6.c
+FAIL: gcc.dg/debug/debug-3.c
+FAIL: gcc.dg/debug/debug-5.c
+FAIL: gcc.dg/20050607-1.c
+FAIL: gcc.dg/Wtrampolines.c
+FAIL: gcc.dg/nested-func-5.c
+FAIL: gcc.dg/pr34457-1.c
+FAIL: gcc.dg/trampoline-1.c
+FAIL: gcc.dg/torture/nested-fn-1.c
+FAIL: gcc.dg/torture/pr86389.c
+FAIL: gcc.dg/torture/stackalign/nested-5.c
+FAIL: gcc.dg/torture/stackalign/nested-6.c
+FAIL: gcc.dg/tree-ssa/tailcall-7-run.c
+FAIL: gcc.dg/tree-ssa/tailcall-7.c

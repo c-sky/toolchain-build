@@ -1,0 +1,10 @@
+# It takes longer to execute for ck802
+FAIL: gcc.dg/pr48141.c (test for excess errors)
+
+# Need debug
+FAIL: g++.dg/ipa/pr67056.C   scan-ipa-dump cp "Speculative outer type:struct CompositeClass"
+
+FAIL: g++.dg/opt/longbranch1.C  -std=gnu++14 (test for excess errors)
+FAIL: g++.dg/opt/longbranch1.C  -std=gnu++17 (test for excess errors)
+FAIL: g++.dg/opt/longbranch1.C  -std=gnu++20 (test for excess errors)
+FAIL: g++.dg/opt/longbranch1.C  -std=gnu++98 (test for excess errors)

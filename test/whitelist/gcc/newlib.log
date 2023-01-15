@@ -1,0 +1,66 @@
+# newlib errno has no attribute 'const', so it cannot be analyzed successfully.
+FAIL: gcc.dg/analyzer/call-summaries-errno.c
+FAIL: gcc.dg/analyzer/errno-1.c
+
+# compile fail because of conflicting types for ‘mode_t’
+FAIL: gcc.dg/analyzer/fd-4.c
+
+# compile fail because of some newlib definitions are incomplete
+FAIL: gcc.dg/analyzer/fd-access-mode-target-headers.c
+XPASS: gcc.dg/analyzer/flex-with-call-summaries.c
+FAIL: gcc.dg/analyzer/flex-without-call-summaries.c
+FAIL: gcc.dg/analyzer/isatty-1.c
+FAIL: g++.dg/warn/Wstringop-overflow-6.C
+
+# Fail because zero address can be visited in bare metal program
+XPASS: g++.dg/torture/pr101373.C
+
+# TODO: Guess not supported
+FAIL: g++.dg/modules/pr98531-1_a.H module-cmi
+FAIL: g++.dg/contracts/contracts-access1.C   output pattern test
+FAIL: g++.dg/contracts/contracts-config1.C   output pattern test
+FAIL: g++.dg/contracts/contracts-constexpr1.C   output pattern test
+FAIL: g++.dg/contracts/contracts-deduced2.C   output pattern test
+FAIL: g++.dg/contracts/contracts-friend1.C   output pattern test
+FAIL: g++.dg/contracts/contracts-multiline1.C   output pattern test
+FAIL: g++.dg/contracts/contracts-pre10.C   output pattern test
+FAIL: g++.dg/contracts/contracts-pre2.C   output pattern test
+FAIL: g++.dg/contracts/contracts-pre2a2.C  -std=c++14 output pattern test
+FAIL: g++.dg/contracts/contracts-pre2a2.C  -std=c++17 output pattern test
+FAIL: g++.dg/contracts/contracts-pre2a2.C  -std=c++20 output pattern test
+FAIL: g++.dg/contracts/contracts-pre4.C   output pattern test
+FAIL: g++.dg/contracts/contracts-pre5.C   output pattern test
+FAIL: g++.dg/contracts/contracts-pre7.C   output pattern test
+FAIL: g++.dg/contracts/contracts-pre9.C   output pattern test
+FAIL: g++.dg/contracts/contracts-redecl3.C   output pattern test
+FAIL: g++.dg/contracts/contracts-redecl4.C   output pattern test
+FAIL: g++.dg/contracts/contracts-redecl6.C   output pattern test
+FAIL: g++.dg/contracts/contracts-redecl7.C   output pattern test
+FAIL: g++.dg/contracts/contracts-tmpl-spec1.C   output pattern test
+FAIL: g++.dg/contracts/contracts-tmpl-spec3.C   output pattern test
+FAIL: g++.dg/contracts/contracts10.C   output pattern test
+FAIL: g++.dg/contracts/contracts14.C   output pattern test
+FAIL: g++.dg/contracts/contracts15.C   output pattern test
+FAIL: g++.dg/contracts/contracts16.C   output pattern test
+FAIL: g++.dg/contracts/contracts17.C   output pattern test
+FAIL: g++.dg/contracts/contracts19.C   output pattern test
+FAIL: g++.dg/contracts/contracts25.C   output pattern test
+FAIL: g++.dg/contracts/contracts35.C   output pattern test
+FAIL: g++.dg/contracts/contracts9.C   output pattern test
+FAIL: g++.dg/modules/xtreme-header-2_a.H -std=c++17 (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_a.H -std=c++2a (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_a.H -std=c++2b (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_a.H module-cmi  (gcm.cache/$srcdir/g++.dg/modules/xtreme-header-2_a.H.gcm)
+FAIL: g++.dg/modules/xtreme-header-2_a.H module-cmi  (gcm.cache/$srcdir/g++.dg/modules/xtreme-header-2_a.H.gcm)
+FAIL: g++.dg/modules/xtreme-header-2_a.H module-cmi  (gcm.cache/$srcdir/g++.dg/modules/xtreme-header-2_a.H.gcm)
+FAIL: g++.dg/modules/xtreme-header-2_c.C -std=c++17 (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_c.C -std=c++2a (test for excess errors)
+FAIL: g++.dg/modules/xtreme-header-2_c.C -std=c++2b (test for excess errors)
+# need debug
+FAIL: g++.dg/ext/label14.C
+FAIL: outputs-22 exe savetmp namedb-2: outputs.ld1_args                                       
+FAIL: outputs-23 exe savetmp named2-2: outputs.ld1_args                                       
+FAIL: outputs-24 exe savetmp named2-3: outputs.ld1_args                                       
+FAIL: outputs-25 exe savetmp named2-4: outputs.ld1_args                                       
+FAIL: outputs-294 lto sing unnamed-3: a.ld1_args                                              
+FAIL: outputs-294 lto sing unnamed-3: a.ld_args
