@@ -1,0 +1,68 @@
+# The checking logic of "pass_waccess::check_pointer_uses" function needs to be improved
+# ---- The gimple stmts when donot has dspv2 ISA ----
+#;;   basic block 2, loop depth 0
+#;;    pred:       ENTRY
+#  _10 = *p_4(D);
+#  if (_10 != 0)
+#    goto <bb 3>; [89.00%]
+#  else
+#    goto <bb 4>; [11.00%]
+#;;    succ:       3
+#;;                4
+#
+#;;   basic block 3, loop depth 1
+#;;    pred:       3
+#;;                2
+#  # q_11 = PHI <q_9(3), p_4(D)(2)>
+#  q_9 = q_11 + 1;
+#  _1 = MEM[(char *)q_9];
+#  if (_1 != 0)
+#    goto <bb 3>; [89.00%]
+#  else
+#    goto <bb 4>; [11.00%]
+#;;    succ:       3
+#;;                4
+#
+#;;   basic block 4, loop depth 0
+#;;    pred:       3
+#;;                2
+#  # q_12 = PHI <q_9(3), p_4(D)(2)>
+#  free (p_4(D));
+#  _2 = *q_12;
+#  _8 = (int) _2;
+#  return _8;
+#;;    succ:       EXIT
+# ---- The gimple stmts when has dspv2 ISA ----
+#;;   basic block 3, loop depth 0
+#;;    pred:       2
+#  _15 = p_4(D) + 1;
+#  ivtmp.76_14 = (unsigned int) _15;
+#;;    succ:       4
+#
+#;;   basic block 4, loop depth 1
+#;;    pred:       4
+#;;                3
+#  # ivtmp.76_5 = PHI <ivtmp.76_13(4), ivtmp.76_14(3)>
+#  q_9 = (char *) ivtmp.76_5;              ---> There is a temp iv ptr bewteen q and p
+#  _1 = MEM[(char *)q_9];
+#  ivtmp.76_13 = ivtmp.76_5 + 1;
+#  if (_1 != 0)
+#    goto <bb 4>; [89.00%]
+#  else
+#    goto <bb 5>; [11.00%]
+#;;    succ:       4
+#;;                5
+#
+#;;   basic block 5, loop depth 0
+#;;    pred:       4
+#;;                2
+#  # q_12 = PHI <q_9(4), p_4(D)(2)>
+#  free (p_4(D));
+#  _2 = *q_12;
+#  _8 = (int) _2;
+#  return _8;
+#;;    succ:       EXIT
+# ---------------------------------------------
+# There is a temp iv ptr bewteen q and p, it casue the use-after-free cannot be detected.
+FAIL: gcc.dg/Wuse-after-free-2.c  (test for warnings, line 115)
+FAIL: gcc.dg/Wuse-after-free-2.c  (test for warnings, line 116)
