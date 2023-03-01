@@ -4,7 +4,8 @@
 	branch = master-csky
 [submodule "binutils"]
 	path = binutils
-	url = https://sourceware.org/git/binutils-gdb.git
+	url = https://github.com/c-sky/binutils-gdb.git
+	branch = master-csky
 [submodule "newlib"]
 	path = newlib
 	url = https://sourceware.org/git/newlib-cygwin.git
