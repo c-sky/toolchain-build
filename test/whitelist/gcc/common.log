@@ -89,3 +89,9 @@ FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++14 (test for excess errors)
 FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++17 (test for excess errors)
 FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++20 (test for excess errors)
 FAIL: g++.dg/warn/Warray-bounds-16.C  -std=gnu++98 (test for excess errors)
+
+# New fail cases found in 2023/3/1, should be caused by gcc mainline
+FAIL: g++.dg/ipa/pr67056.C   scan-ipa-dump cp "Speculative outer type:struct CompositeClass"
+FAIL: gcc.dg/analyzer/allocation-size-multiline-3.c (test for excess errors)
+FAIL: gcc.dg/analyzer/allocation-size-multiline-3.c expected multiline pattern lines 16-25
+FAIL: gcc.dg/analyzer/allocation-size-multiline-3.c expected multiline pattern lines 34-43
