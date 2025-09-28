@@ -195,12 +195,17 @@ class Toolchain(object):
     def has_stamp(self, name):
         return os.path.exists(os.path.join(self.stamps_dir, self.stamp_name(name)))
 
-    def simple_stamp_build(self, name, config):
+    def simple_stamp_build(self, name, config, make_target="", install_target="install"):
         if not self.has_stamp(name):
             build_dir = os.path.join(self.build_dir, "build-" + name)
             self.mkdir(build_dir, clean=True)
             self.execute(config, cwd=build_dir)
-            self.execute("make -j{} && make install -j{}".format(self.jobs, self.jobs), cwd=build_dir)
+            self.execute(
+                "make {} -j{} && make {} -j{}".format(
+                    make_target, self.jobs, install_target, self.jobs
+                ),
+                cwd=build_dir
+            )
             self.add_stamp(name)
 
     def execute(self, cmd, cwd=None, stdout=None):

@@ -497,11 +497,11 @@ WARNINGS="-Wall"
                     if not tmp.startswith("-"):
                         tmp = "-" + tmp
                 build_name = "gdb-server{}".format(tmp)
-                config_cmd = '{} CFLAGS="-O2 {}" CXXFLAGS="-O2 {}" --host={} --prefix={}'.format(
-                                 os.path.join(self.src, "gdbserver", "gdb", "gdbserver", "configure"), opt, opt,
+                config_cmd = '{} CFLAGS="-O2 {}" CXXFLAGS="-O2 {}" --host={} --prefix={} --disable-gdb'.format(
+                                 os.path.join(self.src, "gdb", "configure"), opt, opt,
                                  self.triple, os.path.join(self.sysroot, path, "usr")
                              )
-                self.simple_stamp_build(build_name, config_cmd)
+                self.simple_stamp_build(build_name, config_cmd, "all-gdbserver", "install-gdbserver")
 
     def test(self):
         if "check-gcc" in self.run_type:
