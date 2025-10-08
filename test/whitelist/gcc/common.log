@@ -1,19 +1,7 @@
-FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++14 execution test
-FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++17 execution test
-FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++20 execution test
-FAIL: g++.dg/ext/cleanup-10.C  -std=gnu++98 execution test
-FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++14 execution test
-FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++17 execution test
-FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++20 execution test
-FAIL: g++.dg/ext/cleanup-11.C  -std=gnu++98 execution test
-FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++14 execution test
-FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++17 execution test
-FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++20 execution test
-FAIL: g++.dg/ext/cleanup-8.C  -std=gnu++98 execution test
-FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++14 execution test
-FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++17 execution test
-FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++20 execution test
-FAIL: g++.dg/ext/cleanup-9.C  -std=gnu++98 execution test
+FAIL: g++.dg/ext/cleanup-10.C
+FAIL: g++.dg/ext/cleanup-11.C
+FAIL: g++.dg/ext/cleanup-8.C
+FAIL: g++.dg/ext/cleanup-9.C
 FAIL: g++.dg/pr94920.C  -std=gnu++14  scan-tree-dump-times optimized " ABS_EXPR " 6
 FAIL: g++.dg/pr94920.C  -std=gnu++17  scan-tree-dump-times optimized " ABS_EXPR " 6
 FAIL: g++.dg/pr94920.C  -std=gnu++20  scan-tree-dump-times optimized " ABS_EXPR " 6
