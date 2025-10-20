@@ -12,7 +12,7 @@ from lib import TestFilter
 class CskyGccToolchain(GCCToolchain):
     def __init__(self, triple, src, jobs, version, release_dir, rebuild, short_dir,
                  build_type, extra_config, run_type, host, dep_libs_dir, cpu, endian, fpu, multilib, ccrt, test_opt,
-                 linux_headers, test_cpu, fake, disable_gdb):
+                 linux_headers, linux_headers_version, test_cpu, fake, disable_gdb):
         super(CskyGccToolchain, self).__init__(triple, src, jobs, version, release_dir, rebuild, short_dir,
                                                extra_config, host,
                                                build_type, dep_libs_dir, fake, multilib, run_type)
@@ -20,6 +20,16 @@ class CskyGccToolchain(GCCToolchain):
         self.endian = endian
         self.fpu = fpu
         self.disable_gdb = disable_gdb
+        if linux_headers_version:
+            linux_headers = os.path.join(self.src, "linux-headers-mv", linux_headers_version + ".tar.gz")
+            if not os.path.exists(linux_headers):
+                raise Exception("Unspport linux headers version {}".format(linux_headers_version))
+        if linux_headers:
+            if not linux_headers.endswith(".tar.gz"):
+                raise Exception("The linux header tar file must be tar.gz")
+            else:
+                self.rm(os.path.join(self.src, "linux-headers"))
+                self.extract_from_archive_nofake(linux_headers, cwd=self.src)
         self.mkdir_nofake(self.build_dir, clean=rebuild)
         self.mkdir_nofake(self.install_dir, clean=rebuild)
         self.mkdir_nofake(self.stamps_dir)
@@ -442,7 +452,7 @@ WARNINGS="-Wall"
                 config_cmd += '--enable-shared --enable-libssp --enable-tls --enable-libgomp --disable-libmudflap ' \
                               '--enable-languages=c,c++ --with-build-sysroot={} --with-sysroot={} ' \
                               '--enable-poison-system-directories --with-cskylibc={} ' \
-                              '--with-headers={} '.format(
+                              '--with-headers={} --enable-libsanitizer'.format(
                                   self.sysroot, self.sysroot, self.libc, os.path.join(self.sysroot, "usr", "include")
                               )
             else:

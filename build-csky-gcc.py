@@ -15,7 +15,7 @@ def process(args):
                                      args.rebuild, False, args.build_type,
                                      args.extra_config, args.type, args.host, args.dep_libs,
                                      args.cpu, args.endian, args.fpu,
-                                     args.multilib, False, "", None,
+                                     args.multilib, False, "", args.linux_headers, args.linux_headers_version,
                                      "", args.fake, args.disable_gdb)
         toolchain.run()
 
@@ -48,6 +48,7 @@ def option_init():
     gcc.add_argument('--no-multilib', help="Build single lib toolchain", dest="multilib", action="store_false")
     gcc.set_defaults(multilib=True)
     gcc.add_argument('--linux-headers', help="The linux headers tar file")
+    gcc.add_argument('--linux-headers-version', help="Select the linux headers version")
     gcc.add_argument('--type', help="The action of script", nargs="+", default=[],
                      choices=["release", "check-gcc", "check-binutils", "check-gdb", "doc"])
     csky_gcc = subparsers.add_parser('csky-gcc', help="CSKY GCC project build and test.",
