@@ -387,7 +387,7 @@ WARNINGS="-Wall"
             host_config = 'CXX="g++ -m32" CC="gcc -m32"'
         elif self.host == "mingw":
             host_config = '--host=i686-w64-mingw32'
-        config_cmd = '{} {} --disable-werror --with-included-gettext --disable-gdb ' \
+        config_cmd = '{} {} --disable-werror ' \
                      '--target={} --prefix={} --with-sysroot=yes --enable-any'.format(
                         os.path.join(self.src, "binutils", "configure"), host_config,
                         self.triple, self.install_dir
@@ -449,8 +449,10 @@ WARNINGS="-Wall"
                             self.version_number, self.dep_libs_config
                          )
             if self.platform == "linux":
-                config_cmd += '--enable-shared --enable-libssp --enable-tls --enable-libgomp --disable-libmudflap ' \
-                              '--enable-languages=c,c++ --with-build-sysroot={} --with-sysroot={} ' \
+                config_cmd += '--enable-languages=c,c++,fortran --enable-threads=posix ' \
+                              '--enable-shared --enable-libssp --enable-tls ' \
+                              '--enable-libgomp --disable-libmudflap ' \
+                              '--with-build-sysroot={} --with-sysroot={} ' \
                               '--enable-poison-system-directories --with-cskylibc={} ' \
                               '--with-headers={} --enable-libsanitizer'.format(
                                   self.sysroot, self.sysroot, self.libc, os.path.join(self.sysroot, "usr", "include")
@@ -507,11 +509,11 @@ WARNINGS="-Wall"
                     if not tmp.startswith("-"):
                         tmp = "-" + tmp
                 build_name = "gdb-server{}".format(tmp)
-                config_cmd = '{} CFLAGS="-O2 {}" CXXFLAGS="-O2 {}" --host={} --prefix={} --disable-gdb'.format(
-                                 os.path.join(self.src, "gdb", "configure"), opt, opt,
+                config_cmd = '{} CFLAGS="-O2 {}" CXXFLAGS="-O2 {}" --host={} --prefix={}'.format(
+                                 os.path.join(self.src, "gdb", "gdb", "gdbserver", "configure"), opt, opt,
                                  self.triple, os.path.join(self.sysroot, path, "usr")
                              )
-                self.simple_stamp_build(build_name, config_cmd, "all-gdbserver", "install-gdbserver")
+                self.simple_stamp_build(build_name, config_cmd)
 
     def test(self):
         if "check-gcc" in self.run_type:
