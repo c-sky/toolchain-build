@@ -47,6 +47,9 @@ class GCCToolchain(Toolchain):
         gcc = self.triple + "-gcc"
         if self.host != "mingw":
             gcc = os.path.join(self.install_dir, "bin", gcc)
+        if self.fake and not os.path.exists(gcc):
+            print ("[Warning!!! Multilib Cannot be obtained since gcc has not yet been generated.]")
+            return [["", "."]]
         multilib_rules_str = self.execute_nofake("{} --print-multi-lib".format(gcc), stdout=subprocess.PIPE)
         multilib_rules = []
         added_pathes = {}
