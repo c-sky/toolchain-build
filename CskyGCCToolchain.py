@@ -311,6 +311,16 @@ WARNINGS="-Wall"
             s = self.cpu
         return "801" in s or "802" in s
 
+    @property
+    def origin_triple(self):
+        if self.triple == "csky-linux-gnuabiv2" or self.triple == "csky-linux-uclibcabiv2":
+            return "csky-abiv2-linux"
+        elif self.triple == "csky-linux-gnu" or self.triple == "csky-linux-uclibc":
+            return "csky-linux"
+        elif self.triple == "csky-elfabiv2" or self.triple == "csky-elf-noneabiv2":
+            return "csky-abiv2-elf"
+        return ""
+
     def build_libc(self):
         self.append_path(os.path.join(self.install_dir, "bin"))
         if self.libc == "newlib":
@@ -514,6 +524,14 @@ WARNINGS="-Wall"
                                  self.triple, os.path.join(self.sysroot, path, "usr")
                              )
                 self.simple_stamp_build(build_name, config_cmd)
+        if not self.has_stamp("exe-softlink") and self.origin_triple:
+            exe_path = os.path.join(self.install_dir, "bin")
+            for root, dirs, files in os.walk(exe_path):
+                for f in files:
+                    if root == exe_path and f.startswith(self.triple):
+                        dest = f.replace(self.triple, self.origin_triple)
+                        self.symlink(f, dest, exe_path)
+            self.add_stamp("exe-softlink")
 
     def test(self):
         if "check-gcc" in self.run_type:
