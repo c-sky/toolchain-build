@@ -47,10 +47,10 @@ class CskyGccToolchain(GCCToolchain):
         return os.path.join(self.src, "linux-headers", "include")
 
     def uclibc_config(self, opt):
-        if self.endian == "little":
-            endian = "ARCH_LITTLE_ENDIAN=y\n# ARCH_WANTS_BIG_ENDIAN is not set"
-        else:
+        if self.is_big_endian(opt):
             endian = "# ARCH_WANTS_LITTLE_ENDIAN is not set\nARCH_WANTS_BIG_ENDIAN=y"
+        else:
+            endian = "ARCH_WANTS_LITTLE_ENDIAN=y\n# ARCH_WANTS_BIG_ENDIAN is not set"
         extra_flag = "-O2 {}".format(opt)
         config = '''#
 # Automatically generated file; DO NOT EDIT.
@@ -100,7 +100,6 @@ CSKY_ABIV2=y
 #
 ARCH_ANY_ENDIAN=y
 {}
-ARCH_WANTS_LITTLE_ENDIAN=y
 ARCH_HAS_MMU=y
 ARCH_USE_MMU=y
 UCLIBC_HAS_FLOATS=y
@@ -303,6 +302,16 @@ WARNINGS="-Wall"
         else:
             s = self.fpu
         return "softfp" in s or "hard" in s
+
+    def is_big_endian(self, opt=""):
+        if self.multilib:
+            s = opt
+        else:
+            s = self.endian
+        if opt.find("big") != -1:
+            return True
+        else:
+            return False
 
     def size_prefer(self, opt=""):
         if self.multilib:
@@ -540,7 +549,7 @@ WARNINGS="-Wall"
             # FIXME csky-sim.exp has not been upstream yet, copy it to install dir manually
             self.copy(os.path.join(self.src, "csky-sim.exp"),
                       os.path.join(self.install_dir, "share", "dejagnu", "baseboards"))
-            config_cmd = '{} --prefix={} --target-list=cskyv2-linux-user'.format(
+            config_cmd = '{} --prefix={} --target-list=cskyv2-linux-user,cskyv2eb-linux-user'.format(
                 os.path.join(self.src, "qemu", "configure"), self.install_dir
             )
             self.simple_stamp_build("qemu", config_cmd)
@@ -560,19 +569,23 @@ WARNINGS="-Wall"
                         cpu = match_obj.group(1)
                     else:
                         cpu = "ck810f"
+                if cpu.startswith("ck800"):
+                    continue
                 # FIXME: Change ck803rx to ck803erx cause qemu may miss some instrutions.
                 if cpu.startswith("ck803") and "r" in cpu and "e" not in cpu:
                     cpu = cpu.replace("ck803", "ck803e")
                 cpu_opt = "-cpu " + cpu
                 if not self.has_stamp(build_name):
                     if self.platform == "linux":
-                        sim = "qemu-cskyv2"
+                        if self.is_big_endian(opt):
+                            continue
+                        sim = "qemu-cskyv2eb" if self.is_big_endian(opt) else "qemu-cskyv2"
                         sysroot = os.path.join(self.sysroot, path)
                         sim_opt = "{} -r {} -L {} -csky-extend denormal=on".format(
                             cpu_opt, self.kernel_version, sysroot
                         )
                     else:
-                        sim = "qemu-system-cskyv2" if opt.find("big-endian") == -1 else "qemu-system-cskyv2eb"
+                        sim = "qemu-system-cskyv2" if self.is_big_endian(opt) else "qemu-system-cskyv2eb"
                         sim_opt = "{} -csky-extend denormal=on -semihosting -M smartl -nographic -kernel ".format(cpu_opt)
                     self.execute('DEJAGNU_SIM_INCLUDE_FLAGS="-msim" DEJAGNU_SIM={} DEJAGNU_SIM_OPTIONS="{}" '
                                  'make check-gcc RUNTESTFLAGS="--target_board=csky-sim/{}" -j{}'.format(
