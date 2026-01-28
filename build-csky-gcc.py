@@ -4,6 +4,7 @@
 import argparse
 import logging
 import sys
+import os
 from CskyGCCToolchain import CskyGccToolchain
 
 
@@ -70,7 +71,8 @@ def option_init():
 
 
 def main():
-    logging.basicConfig(filename="build.log", format="%(asctime)s:%(levelname)s:%(message)s", level=logging.INFO)
+    logfile = os.environ.get("TOOLCHAIN_BUILD_LOG", "build.log")
+    logging.basicConfig(filename=logfile, format="%(asctime)s:%(levelname)s:%(message)s", level=logging.INFO)
     option_init()
 
 
