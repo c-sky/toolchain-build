@@ -1,0 +1,9 @@
+# The release package version is also failed.
+FAIL: gcc.dg/strlenopt-2f.c
+FAIL: gfortran.dg/default_format_1.f90
+FAIL: gfortran.dg/default_format_denormal_1.f90
+FAIL: gfortran.dg/fmt_en.f90
+FAIL: gfortran.dg/fmt_g0_1.f08
+FAIL: gfortran.dg/fmt_pf.f90
+FAIL: gfortran.dg/quad_2.f90
+FAIL: g++.dg/abi/forced.C

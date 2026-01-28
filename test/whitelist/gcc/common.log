@@ -83,3 +83,55 @@ FAIL: g++.dg/ipa/pr67056.C   scan-ipa-dump cp "Speculative outer type:struct Com
 FAIL: gcc.dg/analyzer/allocation-size-multiline-3.c (test for excess errors)
 FAIL: gcc.dg/analyzer/allocation-size-multiline-3.c expected multiline pattern lines 16-25
 FAIL: gcc.dg/analyzer/allocation-size-multiline-3.c expected multiline pattern lines 34-43
+
+# The release package version is also failed.
+FAIL: gfortran.dg/common_14.f90
+FAIL: gfortran.dg/common_5.f
+FAIL: gfortran.dg/common_align_2.f90
+FAIL: gfortran.dg/ieee/ieee_1.F90
+FAIL: gfortran.dg/ieee/ieee_2.f90
+FAIL: gfortran.dg/ieee/ieee_6.f90
+FAIL: gfortran.dg/ieee/large_2.f90
+FAIL: gfortran.dg/ieee/large_3.F90
+FAIL: gfortran.dg/ieee/rounding_1.f90
+FAIL: gcc.dg/cpp/trad/include.c
+FAIL: gcc.dg/debug/dwarf2/discriminator.c
+FAIL: gcc.dg/pch/system-1.c
+FAIL: gcc.target/csky/function/attr-isr.c
+FAIL: gcc.target/csky/optimization/common_csky_realcst11.c
+FAIL: gcc.target/csky/optimization/common_csky_realcst12.c
+XPASS: g++.dg/tls/thread_local-order2.C
+# 810 VDSP
+FAIL: gfortran.dg/minlocval_3.f90   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  (test for excess errors)
+FAIL: gcc.target/csky/function/vdsp/vdsp128_vmov.c (test for excess errors)
+FAIL: gcc.target/csky/function/vdsp/vdsp128_vnor.c (test for excess errors)
+FAIL: gcc.target/csky/function/vdsp/vdsp128_vxor.c (test for excess errors)
+FAIL: gcc.target/csky/function/vdsp/vdsp_muls16_basic_b128.c scan-assembler vmuls.u16
+FAIL: gcc.target/csky/function/vdsp/vdsp_muls16_basic_b64.c scan-assembler vmuls.u16
+FAIL: gcc.target/csky/function/vdsp/vdsp_muls32_basic_b128.c scan-assembler vmuls.u32
+FAIL: gcc.target/csky/function/vdsp/vdsp_muls32_basic_b64.c scan-assembler vmuls.u32
+FAIL: gcc.target/csky/function/vdsp/vdsp_muls8_basic_b128.c scan-assembler vmuls.u8
+FAIL: gcc.target/csky/function/vdsp/vdsp_muls8_basic_b64.c scan-assembler vmuls.u8
+FAIL: gcc.target/csky/function/vdsp/vdspv_builtin_128b.c (test for excess errors)
+FAIL: gcc.target/csky/function/vdsp/vdspv_interface_128.c (test for excess errors)
+FAIL: gcc.target/csky/optimization/7E10_ck810_ldrw.c scan-assembler-times ldr.w 21
+# 860 VDSP
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vandn.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vdupg.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vlde.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vldu4.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstmru.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstru1.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstru2.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstru3.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstru4.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstu1.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstu2.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstu3.c
+FAIL: gcc.target/csky/function/vdspv2/vdspv2_vstu4.c
+FAIL: gcc.target/csky/optimization/vdspv2/vdspv2_prologue_epilogue_vstm_vldm.c
+# 860 soft-fp
+FAIL: gcc.dg/torture/pr68264.c
+# 860 hard-fp
+FAIL: gcc.target/csky/function/fpuv3/fpv3_fmov.c scan-assembler fldr.64
+FAIL: gcc.target/csky/function/fpuv3/fpv3_fmov.c scan-assembler fstr.64
