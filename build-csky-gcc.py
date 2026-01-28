@@ -24,8 +24,9 @@ def process(args):
 def option_init():
     parser = argparse.ArgumentParser(description="Toolchain build and test.")
     parent_parser = argparse.ArgumentParser(add_help=False)
-    parent_parser.add_argument('--triple', help="The target triple", choices=["csky-unknown-elf",
-                                                                              "csky-unknown-linux-gnu"],
+    parent_parser.add_argument('--triple', help="The target triple", choices=["csky-linux-gnuabiv2",
+                                                                              "csky-linux-uclibcabiv2",
+                                                                              "csky-elfabiv2"],
                                required=True)
     parent_parser.add_argument('--host', help="The host type for cross build compiler", default="x86_64",
                                choices=["x86_64", "i386", "mingw", "Win32", "Win64"])

@@ -425,6 +425,8 @@ WARNINGS="-Wall"
                         os.path.join(self.src, "gcc", "configure"), host_config, self.triple,
                         self.install_dir, self.libc, self.sysroot, self.version_number, self.dep_libs_config
                      )
+        if self.platform == "elf":
+            config_cmd += ' --enable-sjlj-exceptions'
         if not self.multilib:
             config_cmd += ' --disable-multilib --with-cpu={} --with-endian={} --with-float={}'.format(
                 self.cpu, self.endian, self.fpu
