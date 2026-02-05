@@ -331,7 +331,6 @@ WARNINGS="-Wall"
         return ""
 
     def build_libc(self):
-        self.append_path(os.path.join(self.install_dir, "bin"))
         if self.libc == "newlib":
             config_cmd = '{} --target={} --enable-newlib-io-long-double --enable-newlib-io-long-long ' \
                          '--enable-newlib-io-c99-formats --enable-newlib-retargetable-locking ' \
@@ -417,48 +416,61 @@ WARNINGS="-Wall"
             self.mkdir(target_dir, parent=True)
             self.copy(self.kernel_header, target_dir)
             self.add_stamp("install-linux-header")
-        config_cmd = '{} {} --enable-languages=c --target={} --prefix={} ' \
-                     '--without-headers --with-newlib --disable-shared --disable-libssp ' \
-                     '--disable-libgomp --disable-libmudflap --disable-threads ' \
-                     '--with-cskylibc={} --disable-libquadmath --disable-libatomic ' \
-                     '--with-sysroot={} --with-pkgversion="{}" {} '.format(
-                        os.path.join(self.src, "gcc", "configure"), host_config, self.triple,
-                        self.install_dir, self.libc, self.sysroot, self.version_number, self.dep_libs_config
-                     )
-        if self.platform == "elf":
-            config_cmd += ' --enable-sjlj-exceptions'
-        if not self.multilib:
-            config_cmd += ' --disable-multilib --with-cpu={} --with-endian={} --with-float={}'.format(
-                self.cpu, self.endian, self.fpu
-            )
-        self.simple_stamp_build("gcc-stage1", config_cmd)
-        if self.libc == "glibc" and not self.has_stamp("remove-crt"):
-            while True:
-                try:
-                    self.rm(find(self.install_dir, "crtn.o"))
-                except FindException:
-                    break
-            while True:
-                try:
-                    self.rm(find(self.install_dir, "crti.o"))
-                except FindException:
-                    break
-            self.add_stamp("remove-crt")
-        if self.libc == "minilibc" and not self.has_stamp("install-minilibc-header"):
-            build_dir = os.path.join(self.src, "minilibc")
-            self.execute("make install_headers PREFIX={}/ DEVEL_PREFIX={}/".format(self.install_dir, self.triple),
-                         cwd=build_dir)
-            self.add_stamp("install-minilibc-header")
-        self.build_libc()
-        if self.libc == "glibc" and not self.has_stamp("fix-crt0-and-include"):
-            for root, dirs, files in os.walk(self.sysroot):
-                for f in files:
-                    if f == "crt1.o":
-                        self.copy(os.path.join(root, f), os.path.join(root, "crt0.o"))
-                for d in dirs:
-                    if d == "include" and not os.path.samefile(root, os.path.join(self.sysroot, "usr")):
-                        self.rm(os.path.join(root, d))
-            self.add_stamp("fix-crt0-and-include")
+
+        use_prebuilt_libc = False
+        if self.libc == "minilibc" and not os.path.exists(os.path.join(self.src, "minilibc")):
+            use_prebuilt_libc = True
+            if not self.has_stamp("extract-minilibc"):
+                tar_path = os.path.join(self.src, "prebuilt-libs", "minilibc.tar.gz")
+                self.extract_from_archive(tar_path, self.install_dir)
+                self.add_stamp("extract-minilibc")
+
+        self.append_path(os.path.join(self.install_dir, "bin"))
+
+        if not use_prebuilt_libc:
+            config_cmd = '{} {} --enable-languages=c --target={} --prefix={} ' \
+                        '--without-headers --with-newlib --disable-shared --disable-libssp ' \
+                        '--disable-libgomp --disable-libmudflap --disable-threads ' \
+                        '--with-cskylibc={} --disable-libquadmath --disable-libatomic ' \
+                        '--with-sysroot={} --with-pkgversion="{}" {} '.format(
+                            os.path.join(self.src, "gcc", "configure"), host_config, self.triple,
+                            self.install_dir, self.libc, self.sysroot, self.version_number, self.dep_libs_config
+                        )
+            if self.platform == "elf":
+                config_cmd += ' --enable-sjlj-exceptions'
+            if not self.multilib:
+                config_cmd += ' --disable-multilib --with-cpu={} --with-endian={} --with-float={}'.format(
+                    self.cpu, self.endian, self.fpu
+                )
+            self.simple_stamp_build("gcc-stage1", config_cmd)
+            if self.libc == "glibc" and not self.has_stamp("remove-crt"):
+                while True:
+                    try:
+                        self.rm(find(self.install_dir, "crtn.o"))
+                    except FindException:
+                        break
+                while True:
+                    try:
+                        self.rm(find(self.install_dir, "crti.o"))
+                    except FindException:
+                        break
+                self.add_stamp("remove-crt")
+            if self.libc == "minilibc" and not self.has_stamp("install-minilibc-header"):
+                build_dir = os.path.join(self.src, "minilibc")
+                self.execute("make install_headers PREFIX={}/ DEVEL_PREFIX={}/".format(self.install_dir, self.triple),
+                            cwd=build_dir)
+                self.add_stamp("install-minilibc-header")
+            self.build_libc()
+            if self.libc == "glibc" and not self.has_stamp("fix-crt0-and-include"):
+                for root, dirs, files in os.walk(self.sysroot):
+                    for f in files:
+                        if f == "crt1.o":
+                            self.copy(os.path.join(root, f), os.path.join(root, "crt0.o"))
+                    for d in dirs:
+                        if d == "include" and not os.path.samefile(root, os.path.join(self.sysroot, "usr")):
+                            self.rm(os.path.join(root, d))
+                self.add_stamp("fix-crt0-and-include")
+
         if not self.has_stamp("gcc-stage2"):
             build_dir = os.path.join(self.build_dir, "build-gcc-stage2")
             self.mkdir(build_dir, clean=True)
@@ -479,16 +491,14 @@ WARNINGS="-Wall"
                                   self.sysroot, self.sysroot, self.libc, os.path.join(self.sysroot, "usr", "include")
                               )
             else:
-                config_cmd += '--enable-sjlj-exceptions --disable-shared --disable-libssp ' \
+                config_cmd += '--enable-sjlj-exceptions --disable-shared ' \
                               '--enable-languages=c,c++ --with-headers={} '.format(
                                   os.path.join(self.install_dir, self.triple, "include")
                               )
-            if self.libc == "newlib":
-                config_cmd += '--with-newlib '
-            if self.platform == "elf":
-                config_cmd += '--disable-threads '
-            else:
-                config_cmd += '--enable-threads=posix '
+                if self.libc == "newlib":
+                    config_cmd += '--disable-threads --with-newlib --disable-libssp '
+                else:
+                    config_cmd += '--enable-threads=posix --disable-tls --enable-libssp '
             if not self.multilib:
                 config_cmd += ' --disable-multilib --with-cpu={} --with-endian={} --with-float={} '.format(
                     self.cpu, self.endian, self.fpu
@@ -551,7 +561,7 @@ WARNINGS="-Wall"
             # FIXME csky-sim.exp has not been upstream yet, copy it to install dir manually
             self.copy(os.path.join(self.src, "csky-sim.exp"),
                       os.path.join(self.install_dir, "share", "dejagnu", "baseboards"))
-            config_cmd = '{} --prefix={} --target-list=cskyv2-linux-user,cskyv2eb-linux-user'.format(
+            config_cmd = '{} --prefix={} --target-list=cskyv2-linux-user,cskyv2eb-linux-user,cskyv2-softmmu,cskyv2eb-softmmu'.format(
                 os.path.join(self.src, "qemu", "configure"), self.install_dir
             )
             self.simple_stamp_build("qemu", config_cmd)
@@ -577,6 +587,7 @@ WARNINGS="-Wall"
                 if cpu.startswith("ck803") and "r" in cpu and "e" not in cpu:
                     cpu = cpu.replace("ck803", "ck803e")
                 cpu_opt = "-cpu " + cpu
+                run_flags = ""
                 if not self.has_stamp(build_name):
                     if self.platform == "linux":
                         if self.is_big_endian(opt):
@@ -587,11 +598,14 @@ WARNINGS="-Wall"
                             cpu_opt, self.kernel_version, sysroot
                         )
                     else:
-                        sim = "qemu-system-cskyv2" if self.is_big_endian(opt) else "qemu-system-cskyv2eb"
+                        sim = "qemu-system-cskyv2eb" if self.is_big_endian(opt) else "qemu-system-cskyv2"
                         sim_opt = "{} -csky-extend denormal=on -semihosting -M smartl -nographic -kernel ".format(cpu_opt)
+                        #if self.libc == "minilibc":
+                        #    # FIXME: Only run gcc.dg/dg.exp for minilibc
+                        #    run_flags = "gcc.dg/dg.exp"
                     self.execute('DEJAGNU_SIM_INCLUDE_FLAGS="-msim" DEJAGNU_SIM={} DEJAGNU_SIM_OPTIONS="{}" '
-                                 'make check-gcc RUNTESTFLAGS="--target_board=csky-sim/{}" -j{}'.format(
-                                    sim, sim_opt, "/".join(opt.split()), self.jobs),
+                                 'make check-gcc RUNTESTFLAGS="--target_board=csky-sim/{} {}" -j{}'.format(
+                                    sim, sim_opt, "/".join(opt.split()), run_flags, self.jobs),
                                  cwd=os.path.join(self.build_dir, "build-gcc-stage2"))
                     self.add_stamp(build_name)
                 if not self.has_stamp(build_name + "-pass"):
