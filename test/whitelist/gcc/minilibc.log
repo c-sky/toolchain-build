@@ -1,0 +1,131 @@
+# The release package version is also failed.
+FAIL: gcc.c-torture/execute/builtins/pr23484-chk.c
+FAIL: gcc.c-torture/execute/builtins/snprintf-chk.c
+FAIL: gcc.c-torture/execute/builtins/sprintf-chk.c
+FAIL: gcc.c-torture/execute/builtins/vsnprintf-chk.c
+FAIL: gcc.c-torture/execute/builtins/vsprintf-chk.c
+FAIL: gcc.c-torture/execute/20030125-1.c
+FAIL: gcc.c-torture/execute/920501-8.c
+FAIL: gcc.c-torture/execute/920501-9.c
+FAIL: gcc.c-torture/execute/920726-1.c
+FAIL: gcc.c-torture/execute/930513-1.c
+FAIL: gcc.c-torture/execute/ieee/920810-1.c
+FAIL: c-c++-common/addrtmp.c
+FAIL: gcc.dg/alias-11.c (test for excess errors)
+FAIL: gcc.dg/builtins-58.c scan-assembler-not pow\\M
+FAIL: gcc.dg/builtins-62.c scan-tree-dump-times optimized "cexpi" 3
+FAIL: gcc.dg/builtins-65.c (test for excess errors)
+FAIL: gcc.dg/builtins-67.c (test for excess errors)
+FAIL: gcc.dg/c11-stdatomic-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-4.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-5.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-7.c (test for excess errors)
+FAIL: gcc.dg/intmax_t-1.c (test for excess errors)
+FAIL: gcc.dg/pr42427.c (test for excess errors)
+FAIL: gcc.dg/pr43419.c (test for excess errors)
+FAIL: gcc.dg/pr67786.c output pattern test
+FAIL: gcc.dg/pthread-init-2.c (test for excess errors)
+FAIL: gcc.dg/strlenopt-2.c (test for excess errors)
+FAIL: gcc.dg/strlenopt-21.c (test for excess errors)
+FAIL: gcc.dg/strlenopt-6.c (test for excess errors)
+FAIL: gcc.dg/strlenopt-8.c (test for excess errors)
+FAIL: gcc.dg/ipa/ipa-icf-5.c (test for excess errors)
+FAIL: gcc.dg/ipa/ipa-icf-7.c (test for excess errors)
+FAIL: gcc.dg/ipa/pr64307.c (test for excess errors)
+FAIL: gcc.dg/lto/pr54709 c_lto_pr54709_0.o-c_lto_pr54709_1.o link,  -fPIC -fvisibility=hidden -flto
+FAIL: gcc.dg/lto/pr61526 c_lto_pr61526_0.o-c_lto_pr61526_1.o link,  -fPIC -flto -flto-partition=1to1
+FAIL: gcc.dg/lto/pr64415 c_lto_pr64415_0.o-c_lto_pr64415_1.o link,  -O -flto -fpic
+FAIL: gcc.dg/sso/s3.c
+FAIL: gcc.dg/sso/s5.c
+FAIL: gcc.dg/sso/s6.c
+FAIL: gcc.dg/sso/s7.c
+FAIL: gcc.dg/sso/s8.c
+FAIL: gcc.dg/sso/u5.c
+FAIL: gcc.dg/sso/u6.c
+FAIL: gcc.dg/tls/emutls-2.c (test for excess errors)
+FAIL: gcc.dg/torture/builtin-convert-1.c
+FAIL: gcc.dg/torture/pr68955.c
+FAIL: gcc.dg/torture/pr77855.c
+FAIL: gcc.dg/tree-ssa/ssa-dom-thread-8.c (test for excess errors)
+FAIL: g++.dg/compat/eh/unexpected1 cp_compat_x_tst.o-cp_compat_y_tst.o execute
+FAIL: c-c++-common/addrtmp.c
+FAIL: g++.dg/cdce3.C
+FAIL: g++.dg/concepts/expression.C   (test for excess errors)
+FAIL: g++.dg/cpp0x/initlist25.C
+XPASS: g++.dg/cpp0x/lambda/lambda-eh.C
+FAIL: g++.dg/cpp0x/lambda/lambda-eh2.C
+FAIL: g++.dg/cpp0x/stdint.C
+FAIL: g++.dg/cpp0x/udlit-string-literal.C
+FAIL: g++.dg/eh/forced1.C
+FAIL: g++.dg/eh/forced2.C
+FAIL: g++.dg/eh/omit-frame-pointer.C
+FAIL: g++.dg/eh/registers1.C
+FAIL: g++.dg/eh/uncaught1.C
+FAIL: g++.dg/eh/uncaught4.C
+FAIL: g++.dg/eh/unexpected1.C
+FAIL: g++.dg/init/cleanup3.C
+FAIL: g++.dg/init/new39.C
+FAIL: g++.dg/opt/pr15551.C
+FAIL: g++.dg/rtti/typeid4.C
+FAIL: g++.dg/template/friend10.C
+FAIL: g++.dg/lto/pr69589 cp_lto_pr69589_0.o assemble, -rdynamic
+FAIL: g++.dg/lto/pr69589 cp_lto_pr69589_1.o assemble, -rdynamic
+FAIL: g++.dg/torture/pr67600.C
+FAIL: g++.old-deja/g++.benjamin/15071.C
+FAIL: g++.old-deja/g++.brendan/copy9.C
+FAIL: g++.old-deja/g++.brendan/nest21.C
+FAIL: g++.old-deja/g++.brendan/ptolemy2.C
+FAIL: g++.old-deja/g++.eh/badalloc1.C
+FAIL: g++.old-deja/g++.eh/fntry1.C
+FAIL: g++.old-deja/g++.eh/rethrow1.C
+FAIL: g++.old-deja/g++.eh/rethrow2.C
+FAIL: g++.old-deja/g++.eh/rethrow3.C
+FAIL: g++.old-deja/g++.eh/rethrow4.C
+FAIL: g++.old-deja/g++.eh/rethrow5.C
+FAIL: g++.old-deja/g++.eh/rethrow6.C
+FAIL: g++.old-deja/g++.eh/spec2.C
+FAIL: g++.old-deja/g++.eh/spec3.C
+FAIL: g++.old-deja/g++.eh/spec4.C
+FAIL: g++.old-deja/g++.jason/2371.C
+FAIL: g++.old-deja/g++.jason/template24.C
+FAIL: g++.old-deja/g++.jason/template31.C
+FAIL: g++.old-deja/g++.law/arg8.C
+FAIL: g++.old-deja/g++.law/code-gen5.C
+FAIL: g++.old-deja/g++.law/ctors12.C
+FAIL: g++.old-deja/g++.law/cvt2.C
+FAIL: g++.old-deja/g++.law/virtual3.C
+FAIL: g++.old-deja/g++.mike/eh2.C
+FAIL: g++.old-deja/g++.mike/eh33.C
+FAIL: g++.old-deja/g++.mike/eh39.C
+FAIL: g++.old-deja/g++.mike/eh40.C
+FAIL: g++.old-deja/g++.mike/eh50.C
+FAIL: g++.old-deja/g++.mike/eh51.C
+FAIL: g++.old-deja/g++.mike/init1.C
+FAIL: g++.old-deja/g++.mike/net34.C
+FAIL: g++.old-deja/g++.mike/net46.C
+FAIL: g++.old-deja/g++.mike/p2736.C
+FAIL: g++.old-deja/g++.mike/p658.C
+FAIL: g++.old-deja/g++.mike/temp.C
+FAIL: g++.old-deja/g++.other/headers1.C
+FAIL: g++.old-deja/g++.other/init18.C
+FAIL: g++.old-deja/g++.other/init19.C
+FAIL: g++.old-deja/g++.other/init5.C
+FAIL: g++.old-deja/g++.other/sibcall1.C
+FAIL: g++.old-deja/g++.other/unchanging1.C
+FAIL: g++.old-deja/g++.robertl/eb115.C
+FAIL: g++.old-deja/g++.robertl/eb31.C
+FAIL: g++.old-deja/g++.robertl/eb41.C
+FAIL: g++.old-deja/g++.robertl/eb46.C
+FAIL: g++.old-deja/g++.robertl/eb54.C
+FAIL: g++.old-deja/g++.robertl/eb66.C
+FAIL: g++.old-deja/g++.robertl/eb73.C
+FAIL: g++.old-deja/g++.robertl/eb77.C
+FAIL: gcc.dg/torture/builtin-convert-2.c
+
+# CPU like ck805 donot support PIC
+FAIL: gcc.dg/pic-1.c
+FAIL: gcc.dg/pic-2.c
+FAIL: gcc.dg/pie-1.c
+FAIL: gcc.dg/pie-2.c
+FAIL: g++.dg/tls/pr77285-1.C

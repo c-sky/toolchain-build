@@ -1,0 +1,3 @@
+# The release package version is also failed.
+FAIL: gcc.c-torture/execute/simd-2.c
+FAIL: g++.dg/ext/attribute-test-2.C

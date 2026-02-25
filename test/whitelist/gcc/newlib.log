@@ -64,3 +64,25 @@ FAIL: outputs-24 exe savetmp named2-3: outputs.ld1_args
 FAIL: outputs-25 exe savetmp named2-4: outputs.ld1_args                                       
 FAIL: outputs-294 lto sing unnamed-3: a.ld1_args                                              
 FAIL: outputs-294 lto sing unnamed-3: a.ld_args
+
+# The release package version is also failed.
+FAIL: c-c++-common/addrtmp.c
+XPASS: c-c++-common/raw-string-7.c   execution test
+XPASS: g++.dg/cpp0x/lambda/lambda-eh.C
+FAIL: g++.dg/init/cleanup3.C
+FAIL: g++.dg/lto/pr69589 cp_lto_pr69589_0.o assemble, -rdynamic
+FAIL: g++.dg/lto/pr69589 cp_lto_pr69589_1.o assemble, -rdynamic
+XPASS: c-c++-common/raw-string-7.c  -Wc++-compat  execution test
+FAIL: gcc.dg/c99-stdint-3.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-4.c (test for excess errors)
+FAIL: gcc.dg/lto/pr54709 c_lto_pr54709_0.o-c_lto_pr54709_1.o link,  -fPIC -fvisibility=hidden -flto
+FAIL: gcc.dg/lto/pr61526 c_lto_pr61526_0.o-c_lto_pr61526_1.o link,  -fPIC -flto -flto-partition=1to1
+FAIL: gcc.dg/lto/pr64415 c_lto_pr64415_0.o-c_lto_pr64415_1.o link,  -O -flto -fpic
+FAIL: gcc.dg/tls/emutls-2.c (test for excess errors)
+
+# CPU like ck805 donot support PIC
+FAIL: gcc.dg/pic-1.c
+FAIL: gcc.dg/pic-2.c
+FAIL: gcc.dg/pie-1.c
+FAIL: gcc.dg/pie-2.c
+FAIL: g++.dg/tls/pr77285-1.C
