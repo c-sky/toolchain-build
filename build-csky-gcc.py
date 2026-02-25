@@ -17,7 +17,7 @@ def process(args):
                                      args.extra_config, args.type, args.host, args.dep_libs,
                                      args.cpu, args.endian, args.fpu,
                                      args.multilib, False, "", args.linux_headers, args.linux_headers_version,
-                                     "", args.fake, args.disable_gdb)
+                                     "", args.test_timeout, args.fake, args.disable_gdb)
         toolchain.run()
 
 
@@ -65,6 +65,7 @@ def option_init():
                                            "the single endian when build non-multilib",
                           choices=["little", "big"], default="little")
     csky_gcc.add_argument('--disable-gdb', help="Don't build the gdb.", action="store_true")
+    csky_gcc.add_argument('--test-timeout', help="The timeout of test", default=-1, type=int)
     parser.set_defaults(func=process)
     logging.info(" ".join(sys.argv))
     args = parser.parse_args()

@@ -12,7 +12,7 @@ from lib import TestFilter
 class CskyGccToolchain(GCCToolchain):
     def __init__(self, triple, src, jobs, version, release_dir, rebuild, short_dir,
                  build_type, extra_config, run_type, host, dep_libs_dir, cpu, endian, fpu, multilib, ccrt, test_opt,
-                 linux_headers, linux_headers_version, test_cpu, fake, disable_gdb):
+                 linux_headers, linux_headers_version, test_cpu, test_timeout, fake, disable_gdb):
         super(CskyGccToolchain, self).__init__(triple, src, jobs, version, release_dir, rebuild, short_dir,
                                                extra_config, host,
                                                build_type, dep_libs_dir, fake, multilib, run_type)
@@ -20,6 +20,7 @@ class CskyGccToolchain(GCCToolchain):
         self.endian = endian
         self.fpu = fpu
         self.disable_gdb = disable_gdb
+        self.test_timeout = test_timeout
         if linux_headers_version:
             linux_headers = os.path.join(self.src, "linux-headers-mv", linux_headers_version + ".tar.gz")
             if not os.path.exists(linux_headers):
@@ -556,13 +557,30 @@ WARNINGS="-Wall"
                         self.symlink(f, dest, exe_path)
             self.add_stamp("exe-softlink")
 
+    @property
+    def csky_sim_path(self):
+        return os.path.join(self.install_dir, "share", "dejagnu", "baseboards", "csky-sim.exp")
+
+    def set_test_timeout(self):
+        if self.test_timeout == -1:
+            if self.platform == "linux":
+                return
+            else:
+                self.test_timeout = 10
+        with open(self.csky_sim_path, "r") as f:
+            content = f.read()
+        content = content.replace("timeout 150", "timeout {}".format(self.test_timeout))
+        with open(self.csky_sim_path, "w") as f:
+            f.write(content)
+
     def test(self):
         if "check-gcc" in self.run_type:
             config_cmd = '{} --prefix={}'.format(os.path.join(self.src, "dejagnu", "configure"), self.install_dir)
             self.simple_stamp_build("dejagnu", config_cmd)
             # FIXME csky-sim.exp has not been upstream yet, copy it to install dir manually
             self.copy(os.path.join(self.src, "csky-sim.exp"),
-                      os.path.join(self.install_dir, "share", "dejagnu", "baseboards"))
+                      self.csky_sim_path)
+            self.set_test_timeout()
             config_cmd = '{} --prefix={} --target-list=cskyv2-linux-user,cskyv2eb-linux-user,cskyv2-softmmu,cskyv2eb-softmmu'.format(
                 os.path.join(self.src, "qemu", "configure"), self.install_dir
             )
