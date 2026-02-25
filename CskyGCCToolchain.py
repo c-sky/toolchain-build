@@ -337,7 +337,7 @@ WARNINGS="-Wall"
                          '--prefix={} CFLAGS_FOR_TARGET="-g0 -O2"'.format(
                 os.path.join(self.src, "newlib", "configure"), self.triple, self.install_dir
             )
-            self.simple_stamp_build("newlib", config_cmd)
+            self.simple_stamp_build("newlib", config_cmd, install_dis_parallel=True)
             return
         for opt, path in self.multilib_rules:
             if path == ".":

@@ -195,14 +195,15 @@ class Toolchain(object):
     def has_stamp(self, name):
         return os.path.exists(os.path.join(self.stamps_dir, self.stamp_name(name)))
 
-    def simple_stamp_build(self, name, config, make_target="", install_target="install"):
+    def simple_stamp_build(self, name, config, make_target="", install_target="install", install_dis_parallel=True):
         if not self.has_stamp(name):
             build_dir = os.path.join(self.build_dir, "build-" + name)
             self.mkdir(build_dir, clean=True)
             self.execute(config, cwd=build_dir)
+            install_parallel = "1" if install_dis_parallel else self.jobs
             self.execute(
                 "make {} -j{} && make {} -j{}".format(
-                    make_target, self.jobs, install_target, self.jobs
+                    make_target, self.jobs, install_target, install_parallel
                 ),
                 cwd=build_dir
             )
