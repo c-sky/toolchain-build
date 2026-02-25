@@ -487,9 +487,11 @@ WARNINGS="-Wall"
                               '--enable-libgomp --disable-libmudflap ' \
                               '--with-build-sysroot={} --with-sysroot={} ' \
                               '--enable-poison-system-directories --with-cskylibc={} ' \
-                              '--with-headers={} --enable-libsanitizer'.format(
+                              '--with-headers={}'.format(
                                   self.sysroot, self.sysroot, self.libc, os.path.join(self.sysroot, "usr", "include")
                               )
+                if self.libc == "glibc":
+                    config_cmd += ' --enable-libsanitizer'
             else:
                 config_cmd += '--enable-sjlj-exceptions --disable-shared ' \
                               '--enable-languages=c,c++ --with-headers={} '.format(
